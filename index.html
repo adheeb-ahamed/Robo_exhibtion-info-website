@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgNova — Autonomous Planting Robot</title>
+<meta name="description" content="AgNova is a self-driving robot that digs, plants seedlings at an even spacing and waters every one.">
+<meta name="theme-color" content="#0B1711">
+<meta property="og:title" content="AgNova — Autonomous Planting Robot">
+<meta property="og:description" content="Dig. Plant. Water. Repeat.">
+<meta property="og:image" content="assets/poster-animation.jpg">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1711; --bg2:#0F2219; --card:#13281D; --line:#24443A;
+  --cream:#F2F0E6; --muted:#A9BDB0; --dim:#7F9A88;
+  --lime:#B8F25A; --leaf:#7CC242; --amber:#E8A94B; --aqua:#5AC8F0;
+  --head:'Syne','Inter',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--cream);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:var(--lime)}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:84px 0;position:relative}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:clamp(32px,5.4vw,54px);font-weight:800;margin-bottom:18px}
+h3{font-size:22px;font-weight:700}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:62ch}
+.nova{background:linear-gradient(90deg,var(--lime),#6FD6A8);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,23,17,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(36,68,58,.7)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--cream);font-family:var(--head);font-weight:800;font-size:22px}
+.brand img{width:38px;height:38px}
+.nav nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav nav::-webkit-scrollbar{display:none}
+.nav nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.nav nav a:hover{color:var(--cream);background:var(--card)}
+@media(max-width:720px){.nav nav a:not(.cta){display:none}}
+.cta{background:var(--lime);color:#0B1711!important}
+
+/* hero */
+.hero{padding:56px 0 72px;background:radial-gradient(1000px 600px at 75% 30%,#1C4533 0%,transparent 65%),var(--bg);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.pill{display:inline-block;border:1px solid var(--lime);color:var(--lime);background:rgba(184,242,90,.08);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px}
+h1{font-size:clamp(60px,12vw,124px);font-weight:800;letter-spacing:-.03em}
+.tag{font-family:var(--head);font-weight:700;color:var(--lime);font-size:clamp(20px,3.2vw,30px);margin:12px 0 18px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:700;text-decoration:none;font-size:16px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--lime);color:#0B1711}
+.btn.ghost{border:1px solid var(--line);color:var(--cream);background:var(--card)}
+.herovid{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 6px rgba(184,242,90,.06);aspect-ratio:16/9;background:#081510}
+.herovid video{width:100%;height:100%;object-fit:cover}
+.bubble{position:absolute;left:14px;bottom:14px;background:var(--cream);color:#0B1711;font-weight:600;font-size:14px;padding:10px 16px;border-radius:18px 18px 18px 4px;max-width:80%}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:32px}.hero{padding-top:36px}}
+
+/* generic grids */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.g3,.g2{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.card p{color:var(--muted);font-size:16px;margin-top:8px}
+.alt{background:var(--bg2);border-block:1px solid rgba(36,68,58,.6)}
+
+/* problem */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-top:36px;align-items:stretch}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.bigstat{background:linear-gradient(160deg,#1C3526,#13241B);border:1px solid var(--line);border-radius:26px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.bigstat .num{font-family:var(--head);font-weight:800;font-size:clamp(72px,14vw,128px);line-height:1;color:var(--lime)}
+.bigstat small{color:var(--dim);font-size:13px}
+.pain{display:flex;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.pain:first-child{border-top:0;padding-top:0}
+.ico{flex:none;width:48px;height:48px;border-radius:14px;background:rgba(184,242,90,.12);display:grid;place-items:center;color:var(--lime)}
+.ico svg{width:26px;height:26px}
+.pain p{color:var(--muted);font-size:16px;margin-top:4px}
+
+/* steps */
+.steps{margin-top:36px;counter-reset:s}
+.step{position:relative;overflow:hidden}
+.step .n{font-family:var(--head);font-weight:800;font-size:40px;color:var(--lime);line-height:1}
+.step .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.step svg{width:52px;height:52px}
+.loop{margin-top:18px;border:2px dashed #3E6B4F;border-radius:999px;padding:16px 24px;display:flex;gap:14px;align-items:center;color:var(--cream);font-size:16px}
+.loop svg{flex:none;width:28px;height:28px;color:var(--lime)}
+@media(max-width:620px){.loop{border-radius:22px}}
+
+/* videos */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 16px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);font:600 15px var(--body);padding:10px 18px;border-radius:999px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--lime);color:#0B1711;border-color:var(--lime)}
+.player{border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.player video{width:100%;max-height:78vh;background:#000}
+.vcap{color:var(--muted);font-size:15px;margin-top:14px}
+
+/* obstacle */
+.two{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.olist{list-style:none;margin-top:22px;display:grid;gap:12px}
+.olist li{display:flex;gap:14px;align-items:flex-start}
+.olist b{color:var(--cream)}
+.olist span.c{flex:none;width:32px;height:32px;border-radius:50%;background:var(--lime);color:#0B1711;font-weight:800;display:grid;place-items:center;font-size:15px}
+.olist li:nth-child(3) span.c{background:var(--amber)}
+.olist p{color:var(--muted);font-size:16px}
+.diagram{border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.diagram svg{display:block;width:100%;height:auto}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.stat{border-top:3px solid var(--lime);padding-top:14px}
+.stat.am{border-color:var(--amber)} .stat.aq{border-color:var(--aqua)}
+.stat .v{font-family:var(--head);font-weight:800;font-size:clamp(30px,5vw,46px);color:var(--lime);line-height:1.1}
+.stat.am .v{color:var(--amber)} .stat.aq .v{color:var(--aqua)}
+.stat .l{color:var(--muted);font-size:14px}
+.note{display:inline-block;margin-top:24px;background:var(--cream);color:#0B1711;font-weight:600;font-size:15px;padding:12px 18px;border-radius:20px 20px 20px 4px}
+
+/* parts */
+.parts{margin-top:32px}
+.part{display:flex;gap:14px;align-items:flex-start}
+.part .dot{flex:none;width:12px;height:12px;border-radius:50%;background:var(--lime);margin-top:9px;box-shadow:0 0 0 5px rgba(184,242,90,.15)}
+.part p{margin-top:2px}
+
+/* rows (spacing) */
+.rows{display:grid;gap:14px}
+.row{background:#DCCFB6;border-radius:999px;height:64px;position:relative;overflow:hidden}
+.row i{position:absolute;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#B8F25A 0 22%,#5E9E2E 24% 100%);box-shadow:0 0 0 5px rgba(79,138,42,.35)}
+.rowlab{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;font-weight:600;margin-bottom:6px}
+
+/* water */
+.tank{position:relative;width:min(280px,70%);aspect-ratio:3/4;margin-inline:auto}
+.tank svg{width:100%;height:100%}
+
+/* footer */
+footer{padding:56px 0 40px;text-align:center;border-top:1px solid var(--line);background:radial-gradient(700px 300px at 50% 120%,#1C4533,transparent 70%)}
+footer img{width:88px;margin:0 auto 14px}
+footer .w{font-family:var(--head);font-weight:800;font-size:40px}
+footer p{color:var(--muted);font-size:15px;margin-top:6px}
+footer small{display:block;color:var(--dim);margin-top:22px;font-size:13px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo.svg" alt="AgNova logo"><span>Ag<span class="nova">Nova</span></span></a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#obstacle">Obstacles</a>
+      <a href="#robot">The robot</a>
+      <a href="#features">Features</a>
+      <a class="cta" href="#watch">▶ Watch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill">Autonomous Agri-Robotics</span>
+      <h1>Ag<span class="nova">Nova</span></h1>
+      <p class="tag">Dig. Plant. Water. Repeat.</p>
+      <p class="lead">A self-driving robot that spots the perfect place, digs, plants young seedlings at an even spacing and waters every one.</p>
+      <div class="btns">
+        <a class="btn primary" href="#watch">▶ Watch it work</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+    </div>
+    <div class="herovid">
+      <video src="assets/hero.mp4" poster="assets/poster-hero.jpg" autoplay muted loop playsinline preload="metadata" aria-label="3D model of the AgNova robot rotating"></video>
+      <div class="bubble">Beep! I dig, I plant, I water. You put your feet up.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">The problem</p>
+    <h2 class="rv">Planting by hand is back-breaking work.</h2>
+    <div class="split">
+      <div class="bigstat rv">
+        <div class="eyebrow" style="color:var(--dim);margin:0">Key figure</div>
+        <div class="num"><span data-count="160">160</span>h</div>
+        <div>
+          <p>of labour to plant <b>one hectare</b> of tomato or chilli seedlings by hand. That’s 20 full workdays for one person.</p>
+          <small>Source: Kumar et al., International Journal of Current Microbiology and Applied Sciences (2021)</small>
+        </div>
+      </div>
+      <div class="card rv">
+        <div class="pain">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><h3>Hours bent over</h3><p>Every seedling means kneeling, digging, planting and coming back with water.</p></div>
+        </div>
+        <div class="pain">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 3 20h18L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></div>
+          <div><h3>Uneven spacing</h3><p>Plants set too close fight each other for sun, water and nutrients.</p></div>
+        </div>
+        <div class="pain">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div>
+          <div><h3>Thirsty transplants</h3><p>Fresh seedlings that miss their first watering often don’t survive.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <p class="eyebrow rv">How it works</p>
+    <h2 class="rv">Four moves, on repeat.</h2>
+    <p class="lead rv">AgNova finds the right spot, digs a hole, plants a seedling and waters it, then rolls exactly the distance you set and does it all over again.</p>
+    <div class="grid g4 steps">
+      <div class="card step rv"><div class="top"><span class="n">01</span><svg viewBox="0 0 64 64"><path d="M8 22V8h14M42 8h14v14M56 42v14H42M22 56H8V42" stroke="#F2F0E6" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="9" fill="#B8F25A"/></svg></div><h3>Detect</h3><p>The ultrasonic sensor checks the path for rocks, weeds and other obstacles.</p></div>
+      <div class="card step rv"><div class="top"><span class="n">02</span><svg viewBox="0 0 64 64"><line x1="50" y1="8" x2="30" y2="38" stroke="#F2F0E6" stroke-width="6" stroke-linecap="round"/><line x1="44" y1="6" x2="56" y2="12" stroke="#F2F0E6" stroke-width="6" stroke-linecap="round"/><path d="M22 32 38 44 30 56Q16 62 10 52 8 42 22 32Z" fill="#B8F25A"/></svg></div><h3>Dig</h3><p>A dedicated digging motor swings down and digs a hole for the plant.</p></div>
+      <div class="card step rv"><div class="top"><span class="n">03</span><svg viewBox="0 0 64 64"><path d="M32 58V30" stroke="#F2F0E6" stroke-width="5" stroke-linecap="round"/><path d="M32 36C20 36 12 26 12 16c12 0 20 8 20 20Z" fill="#B8F25A"/><path d="M32 30c12 0 20-10 20-20-12 0-20 8-20 20Z" fill="#8FD14F"/><line x1="14" y1="58" x2="50" y2="58" stroke="#E8A94B" stroke-width="5" stroke-linecap="round"/></svg></div><h3>Plant</h3><p>The robot arm lifts a seedling from its tray and sets it in the hole.</p></div>
+      <div class="card step rv"><div class="top"><span class="n">04</span><svg viewBox="0 0 64 64"><path d="M32 6S12 30 12 42a20 20 0 0 0 40 0C52 30 32 6 32 6Z" fill="#5AC8F0"/><path d="M22 42a10 10 0 0 0 8 10" stroke="#F2F0E6" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div><h3>Water</h3><p>A pump gives each new plant 25 ml of water.</p></div>
+    </div>
+    <div class="loop rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg><span><b>Then it moves forward by the spacing you set</b> and repeats the process, row after row.</span></div>
+  </div>
+</section>
+
+<!-- WATCH -->
+<section id="watch" class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">Watch</p>
+    <h2 class="rv">See AgNova in action.</h2>
+    <div class="tabs rv" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-src="assets/animation.mp4" data-poster="assets/poster-animation.jpg" data-cap="3D animation: every part labelled, then the full cycle — detect, go around, dig, plant, water and move on.">3D animation</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="assets/demo.mp4" data-poster="assets/poster-demo.jpg" data-cap="The real prototype: the digging motor, robotic arm and obstacle avoidance running on the floor.">Prototype demo</button>
+      <button class="tab" role="tab" aria-selected="false" data-src="assets/prototype.mp4" data-poster="assets/poster-prototype.jpg" data-cap="A walk around the finished prototype.">360° look</button>
+    </div>
+    <div class="player rv"><video id="vid" src="assets/animation.mp4" poster="assets/poster-animation.jpg" controls playsinline preload="metadata"></video></div>
+    <p class="vcap" id="vcap">3D animation: every part labelled, then the full cycle — detect, go around, dig, plant, water and move on.</p>
+  </div>
+</section>
+
+<!-- OBSTACLE -->
+<section id="obstacle">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow rv">Obstacle detection</p>
+      <h2 class="rv">Obstacle? It goes around.</h2>
+      <p class="lead rv">Ultrasonic sensors scan the path ahead. If something is in the way, AgNova detours, then finds its way back to the line.</p>
+      <ol class="olist rv">
+        <li><span class="c">1</span><p><b>Sense</b> — an ultrasonic ping spots objects within 10 cm.</p></li>
+        <li><span class="c">2</span><p><b>Detour</b> — it moves around the obstacle.</p></li>
+        <li><span class="c">3</span><p><b>Track</b> — it measures how far it went off path.</p></li>
+        <li><span class="c">4</span><p><b>Rejoin</b> — it returns to the line and keeps counting the spacing.</p></li>
+      </ol>
+    </div>
+    <div class="diagram rv">
+      <svg viewBox="0 0 832 560" role="img" aria-label="Top-down diagram of the robot detouring around a rock and rejoining its planned path">
+        <defs><linearGradient id="sv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A3523"/><stop offset="1" stop-color="#2A1D12"/></linearGradient></defs>
+        <rect width="832" height="560" fill="url(#sv)"/>
+        <line x1="40" y1="46" x2="90" y2="46" stroke="#B8F25A" stroke-width="6" stroke-linecap="round"/><text x="104" y="54" fill="#F2F0E6" font-family="Inter,sans-serif" font-weight="700" font-size="22">Actual path</text>
+        <line x1="290" y1="46" x2="340" y2="46" stroke="#F2F0E6" stroke-width="3" stroke-dasharray="8 6"/><text x="354" y="54" fill="#F2F0E6" font-family="Inter,sans-serif" font-weight="700" font-size="22">Planned path</text>
+        <line x1="40" y1="340" x2="792" y2="340" stroke="#F2F0E6" stroke-width="3" stroke-dasharray="10 8" opacity=".6"/>
+        <line x1="470" y1="196" x2="470" y2="336" stroke="#E8A94B" stroke-width="3"/><line x1="458" y1="196" x2="482" y2="196" stroke="#E8A94B" stroke-width="3"/>
+        <path d="M430 352Q420 300 470 292q52-4 55 43 5 50-47 57-46 4-48-40Z" fill="#8C857A"/><path d="M448 318q17-16 47-10-20 10-33 24Z" fill="#A9A296"/>
+        <path d="M40 340H330C385 340 385 190 440 190H500C555 190 555 340 610 340H792" stroke="#B8F25A" stroke-width="6" fill="none" stroke-linecap="round">
+          <animate attributeName="stroke-dasharray" from="0 1400" to="1400 0" dur="4s" repeatCount="indefinite"/>
+        </path>
+        <g fill="#5E9E2E"><circle cx="60" cy="340" r="20"/><circle cx="140" cy="340" r="20"/></g><g fill="#B8F25A"><circle cx="60" cy="340" r="7"/><circle cx="140" cy="340" r="7"/></g>
+        <circle cx="730" cy="340" r="22" fill="none" stroke="#E8A94B" stroke-width="3" stroke-dasharray="6 5"/><circle cx="730" cy="340" r="6" fill="#E8A94B"/>
+        <rect x="190" y="302" width="100" height="76" rx="18" fill="#0E1A14" stroke="#B8F25A" stroke-width="3"/><circle cx="225" cy="340" r="14" fill="#5AC8F0"/><rect x="282" y="328" width="12" height="24" rx="4" fill="#F2F0E6"/>
+        <g stroke="#5AC8F0" stroke-width="4" fill="none" stroke-linecap="round"><path d="M310 322q8 18 0 36"/><path d="M326 312q12 28 0 56" opacity=".75"/><path d="M342 302q16 38 0 76" opacity=".5"/></g>
+        <g font-family="Inter,sans-serif" font-weight="800" font-size="22" text-anchor="middle">
+          <circle cx="330" cy="410" r="20" fill="#B8F25A"/><text x="330" y="418" fill="#0E1A14">1</text>
+          <circle cx="330" cy="200" r="20" fill="#B8F25A"/><text x="330" y="208" fill="#0E1A14">2</text>
+          <circle cx="440" cy="250" r="20" fill="#E8A94B"/><text x="440" y="258" fill="#0E1A14">3</text>
+          <circle cx="610" cy="280" r="20" fill="#B8F25A"/><text x="610" y="288" fill="#0E1A14">4</text>
+        </g>
+        <text x="470" y="176" fill="#E8A94B" font-family="Inter,sans-serif" font-weight="700" font-size="20" text-anchor="middle">off path</text>
+        <text x="730" y="392" fill="#E8A94B" font-family="Inter,sans-serif" font-weight="700" font-size="20" text-anchor="middle">Next plant</text>
+        <path d="M140 480H730M140 468v24M730 468v24" stroke="#F2F0E6" stroke-width="2"/>
+        <text x="435" y="520" fill="#F2F0E6" font-family="Inter,sans-serif" font-weight="700" font-size="20" text-anchor="middle">Spacing counted along the planned line</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ROBOT -->
+<section id="robot" class="alt">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <p class="eyebrow rv">The robotic arm</p>
+        <h2 class="rv">Two motors. One job each.</h2>
+        <p class="lead rv">A dedicated digging motor makes the hole. The arm runs on a single base motor that swings the seedling from the tray into place.</p>
+        <div class="stats rv">
+          <div class="stat"><div class="v">45°</div><div class="l">Arm swing (base motor)</div></div>
+          <div class="stat am"><div class="v">10 cm</div><div class="l">Hole depth (dig motor)</div></div>
+          <div class="stat"><div class="v">40 sec</div><div class="l">Per plant</div></div>
+        </div>
+        <span class="note rv">Prototype life: one motor, maximum effort.</span>
+      </div>
+      <div class="rv"><img src="assets/poster-prototype.jpg" alt="The AgNova prototype on a table" style="border-radius:24px;border:1px solid var(--line);width:100%"></div>
+    </div>
+    <div class="grid g3 parts">
+      <div class="card part rv"><span class="dot"></span><div><h3>Ultrasonic sensor</h3><p>Sits on a servo at the front and scans for obstacles.</p></div></div>
+      <div class="card part rv"><span class="dot"></span><div><h3>Seedling tray</h3><p>A rotating disc that carries the seedlings to the arm.</p></div></div>
+      <div class="card part rv"><span class="dot"></span><div><h3>Robotic arm</h3><p>Picks each seedling and places it in the hole.</p></div></div>
+      <div class="card part rv"><span class="dot"></span><div><h3>Digging motor</h3><p>Swings down on its own servo and digs the hole.</p></div></div>
+      <div class="card part rv"><span class="dot"></span><div><h3>Water tank &amp; nozzle</h3><p>A 200 ml tank feeds a nozzle beside the planting spot.</p></div></div>
+      <div class="card part rv"><span class="dot"></span><div><h3>Drive wheels</h3><p>Wheel encoders measure every move to keep spacing exact.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACING -->
+<section id="spacing">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow rv">Precise spacing</p>
+      <h2 class="rv">You pick the gap. It never misses.</h2>
+      <p class="lead rv">Set the distance between plants for each crop. Wheel encoders then measure every move, so each plant lands exactly that far apart.</p>
+      <div class="stats rv" style="grid-template-columns:repeat(2,1fr);max-width:420px">
+        <div class="stat"><div class="v">35 cm</div><div class="l">Minimum spacing</div></div>
+        <div class="stat"><div class="v">Custom</div><div class="l">Maximum spacing (adjustable)</div></div>
+      </div>
+      <span class="note rv">Tomatoes? Chillies? Just tell me the gap.</span>
+    </div>
+    <div class="rows rv">
+      <div><div class="rowlab"><span>Narrow gap</span></div><div class="row" data-n="6"></div></div>
+      <div><div class="rowlab"><span>Medium gap</span></div><div class="row" data-n="4"></div></div>
+      <div><div class="rowlab"><span>Wide gap</span></div><div class="row" data-n="3"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WATER -->
+<section id="water" class="alt">
+  <div class="wrap two">
+    <div class="tank rv">
+      <svg viewBox="0 0 300 400" role="img" aria-label="Water droplet">
+        <defs><clipPath id="dc"><path d="M150 20S40 170 40 255a110 110 0 0 0 220 0C260 170 150 20 150 20Z"/></clipPath></defs>
+        <path d="M150 20S40 170 40 255a110 110 0 0 0 220 0C260 170 150 20 150 20Z" fill="#13241B"/>
+        <g clip-path="url(#dc)">
+          <path fill="#5AC8F0" opacity=".9" d="M-300 230q37-16 75 0t75 0 75 0 75 0 75 0 75 0 75 0 75 0V400H-300Z"><animateTransform attributeName="transform" type="translate" from="0 0" to="150 0" dur="3s" repeatCount="indefinite"/></path>
+        </g>
+        <path d="M150 20S40 170 40 255a110 110 0 0 0 220 0C260 170 150 20 150 20Z" fill="none" stroke="#5AC8F0" stroke-width="3"/>
+        <text x="150" y="300" text-anchor="middle" fill="#0E1A14" font-family="Syne,Inter,sans-serif" font-weight="800" font-size="40">25 ml</text>
+        <text x="150" y="326" text-anchor="middle" fill="#0E1A14" font-family="Inter,sans-serif" font-weight="700" font-size="14" letter-spacing="2">PER PLANT</text>
+      </svg>
+    </div>
+    <div>
+      <p class="eyebrow rv" style="color:var(--aqua)">Smart watering</p>
+      <h2 class="rv">Every plant gets watered.</h2>
+      <p class="lead rv">Right after planting, a pump gives each seedling a measured splash so its roots settle in fast. A soil-moisture sensor skips spots that are already damp.</p>
+      <div class="stats rv" style="grid-template-columns:repeat(2,1fr);max-width:420px">
+        <div class="stat aq"><div class="v">200 ml</div><div class="l">Water tank</div></div>
+        <div class="stat aq"><div class="v">25 ml</div><div class="l">Per plant</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <p class="eyebrow rv">Key features</p>
+    <h2 class="rv">Six skills. Zero coffee breaks.</h2>
+    <div class="grid g3" style="margin-top:32px">
+      <div class="card rv"><h3>Object detection</h3><p>Finds free spots and flags rocks, weeds and obstacles.</p></div>
+      <div class="card rv"><h3>Auto digging</h3><p>Digs a clean hole for every seedling.</p></div>
+      <div class="card rv"><h3>Gentle gripper</h3><p>Lifts seedlings by the root ball without crushing stems.</p></div>
+      <div class="card rv"><h3>Custom spacing</h3><p>Set a consistent gap for each crop.</p></div>
+      <div class="card rv"><h3>Watering system</h3><p>Adds 25 ml of water for each plant.</p></div>
+      <div class="card rv"><h3>Obstacle safety</h3><p>Stops or steers around obstacles, animals and objects.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.svg" alt="">
+    <div class="w">Ag<span class="nova">Nova</span></div>
+    <p>Dig. Plant. Water. Repeat.</p>
+    <p>Built by Avishka</p>
+    <small>Thank you for visiting our stall!</small>
+  </div>
+</footer>
+
+<script>
+// reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+// count-up
+document.querySelectorAll('[data-count]').forEach(el => {
+  const end = +el.dataset.count; let done = false;
+  new IntersectionObserver(([e]) => { if (!e.isIntersecting || done) return; done = true; const t0 = performance.now();
+    (function tick(t) { const k = Math.min((t - t0) / 1200, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
+  }, { threshold: .5 }).observe(el);
+});
+// video tabs
+const vid = document.getElementById('vid'), cap = document.getElementById('vcap');
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === b));
+  vid.poster = b.dataset.poster; vid.src = b.dataset.src; cap.textContent = b.dataset.cap; vid.play().catch(() => {});
+}));
+// spacing rows
+document.querySelectorAll('.row').forEach(r => { const n = +r.dataset.n; for (let i = 0; i < n; i++) { const d = document.createElement('i'); d.style.left = (8 + (84 * i) / (n - 1)) + '%'; r.appendChild(d); } });
+</script>
+</body>
+</html>
