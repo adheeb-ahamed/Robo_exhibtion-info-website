@@ -229,6 +229,27 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
   .tank{width:170px}
 }
 
+/* future app */
+.app{background:linear-gradient(150deg,#3B2E8C 0%,var(--navy) 55%,#0F4E5A 100%)}
+.app .eyebrow{color:#C7BDFF}
+.soon{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;font-size:13px;padding:5px 12px;border-radius:999px;margin-left:10px;vertical-align:middle;letter-spacing:.02em}
+.applist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+@media(max-width:900px){.applist{grid-template-columns:1fr}}
+.applist li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px}
+.applist .ico{width:42px;height:42px;border-radius:12px;background:var(--c)}
+.applist .ico svg{width:22px;height:22px}
+.applist b{display:block;color:#fff;font-size:16px;margin-bottom:2px}
+.applist p{font-size:14.5px;line-height:1.55}
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px}
+.phone{margin:0}
+.phone .frame{border-radius:30px;padding:8px;background:#0A1222;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.12)}
+.phone img{border-radius:23px;width:100%;aspect-ratio:399/863;object-fit:cover}
+.phone figcaption{text-align:center;margin-top:12px;font-weight:700;font-size:15px;color:var(--cream)}
+@media(max-width:900px){.phones{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:6px 20px 14px;scrollbar-width:none}.phones::-webkit-scrollbar{display:none}.phone{flex:0 0 62%;scroll-snap-align:center}}
+.applink{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:36px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:20px 24px}
+.applink .url{font-family:var(--en-body);font-weight:600;color:var(--tealL);word-break:break-all;font-size:15px}
+.applink small{display:block;color:var(--ondark);font-size:14px}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
@@ -246,6 +267,7 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
         <a href="#obstacle"><span class="si">බාධක</span><span class="en">Obstacles</span></a>
         <a href="#robot"><span class="si">රොබෝවරයා</span><span class="en">The robot</span></a>
         <a href="#features"><span class="si">විශේෂාංග</span><span class="en">Features</span></a>
+        <a href="#app"><span class="si">යෙදුම</span><span class="en">App</span></a>
         <a class="cta" href="#watch">▶ <span class="si">වීඩියෝ</span><span class="en">Watch</span></a>
       </nav>
       <button class="lang" id="lang" type="button" aria-label="Change language / භාෂාව වෙනස් කරන්න">
@@ -489,6 +511,33 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
         <div class="stat" style="--c:#2F8FD8"><div class="v"><span class="si">මි.ලී. 200</span><span class="en">200 ml</span></div><div class="l"><span class="si">ජල ටැංකිය</span><span class="en">Water tank</span></div></div>
         <div class="stat" style="--c:#179483"><div class="v"><span class="si">මි.ලී. 25</span><span class="en">25 ml</span></div><div class="l"><span class="si">එක් පැළයකට</span><span class="en">Per plant</span></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE APP -->
+<section id="app" class="dark app">
+  <div class="wrap">
+    <p class="eyebrow rv"><span class="si">අනාගත ජංගම යෙදුම</span><span class="en">The future app</span></p>
+    <h2 class="rv"><span class="si">ඔබේ දුරකථනයෙන්ම පරතරය සහ ජලය පාලනය කරන්න.</span><span class="en">Check and change the spacing from your phone.</span><span class="soon"><span class="si">ඉදිරියේදී</span><span class="en">Coming soon</span></span></h2>
+    <p class="lead rv"><span class="si">අනාගතයේදී AgNova සඳහා ජංගම යෙදුමක් සැලසුම් කර ඇත. එමගින් පැළ අතර පරතරය, ජල ප්‍රමාණය සහ වගා බිමේ තොරතුරු පරීක්ෂා කර වෙනස් කළ හැකියි. එහි මූලික අනුවාදය දැනටමත් වෙබ් අඩවියක් ලෙස භාවිත කළ හැකියි.</span><span class="en">A mobile app for AgNova is planned. With it you can check and change the plant spacing, the water per plant and the field details. An early version already works as a website.</span></p>
+    <ul class="applist rv">
+        <li><div class="ico" style="--c:#5DAE3E"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 13C7 13 4 9 4 5c5 0 8 3 8 8z"/><path d="M12 11c5 0 8-4 8-8-5 0-8 3-8 8z"/></svg></div><div><b><span class="si">බෝගය තෝරන්න</span><span class="en">Pick a crop</span></b><p><span class="si">මිරිස්, තක්කාලි, වම්බටු, ගෝවා වැනි බෝගයක් තේරූ විට පරතරය සහ ජල ප්‍රමාණය ස්වයංක්‍රීයව සැකසේ.</span><span class="en">Choose chilli, tomato, brinjal, cabbage and more, and the spacing and water fill in automatically.</span></p></div></li>
+        <li><div class="ico" style="--c:#F28C28"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 8v8M21 8v8M9 10v4M15 10v4"/></svg></div><div><b><span class="si">පරතරය සහ වගා බිම</span><span class="en">Spacing & field</span></b><p><span class="si">බිමේ දිග, පළල, පැළ අතර පරතරය, පේළි අතර පරතරය සහ පැළ ගණන වෙනස් කරන්න.</span><span class="en">Change the field length and width, the gap between plants, the gap between rows and the number of plants.</span></p></div></li>
+        <li><div class="ico" style="--c:#2F8FD8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div><div><b><span class="si">ජලය</span><span class="en">Water</span></b><p><span class="si">පැළයකට දමන ජල ප්‍රමාණය සහ pump කාලය සකසන්න. වැසි සහිත දිනවල ජලය දැමීම නවතී.</span><span class="en">Set the water per plant and the pump time. Watering stops on rainy days.</span></p></div></li>
+        <li><div class="ico" style="--c:#E2553F"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div><div><b><span class="si">සජීවී වගා බිම් සිතියම</span><span class="en">Live field map</span></b><p><span class="si">රොබෝවරයා ගමන් කරන මාර්ගය සහ පැළ සිටුවන සෑම ස්ථානයක්ම බලන්න.</span><span class="en">See the path the robot will drive and every spot where it will plant.</span></p></div></li>
+        <li><div class="ico" style="--c:#6A5ACD"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg></div><div><b><span class="si">Arduino සැකසුම්</span><span class="en">Arduino settings</span></b><p><span class="si">තෝරාගත් අගයන් රොබෝවරයාගේ Arduino කේතයට පිටපත් කරන්න.</span><span class="en">Copy the values you chose straight into the robot’s Arduino code.</span></p></div></li>
+        <li><div class="ico" style="--c:#F6B93B"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><b><span class="si">රැකබලා ගැනීමේ මාර්ගෝපදේශය</span><span class="en">Care guide</span></b><p><span class="si">පොහොර, ජලය සහ අස්වනු දින, දින දර්ශන සහ WhatsApp මතක් කිරීම් සමඟ.</span><span class="en">Fertiliser, watering and harvest dates, with calendar and WhatsApp reminders.</span></p></div></li>
+    </ul>
+    <div class="phones">
+      <figure class="phone rv"><div class="frame"><img src="assets/app-crops.jpg" alt="AgNova app: Crop picker screen" loading="lazy"></div><figcaption><span class="si">බෝගය තේරීම</span><span class="en">Crop picker</span></figcaption></figure>
+      <figure class="phone rv"><div class="frame"><img src="assets/app-spacing.jpg" alt="AgNova app: Spacing and water settings screen" loading="lazy"></div><figcaption><span class="si">පරතරය සහ ජලය</span><span class="en">Spacing & water</span></figcaption></figure>
+      <figure class="phone rv"><div class="frame"><img src="assets/app-map.jpg" alt="AgNova app: Field map screen" loading="lazy"></div><figcaption><span class="si">වගා බිම් සිතියම</span><span class="en">Field map</span></figcaption></figure>
+      <figure class="phone rv"><div class="frame"><img src="assets/app-guide.jpg" alt="AgNova app: Care guide screen" loading="lazy"></div><figcaption><span class="si">රැකබලා ගැනීම</span><span class="en">Care guide</span></figcaption></figure>
+    </div>
+    <div class="applink rv">
+      <a class="btn primary" href="https://ruviranga123.github.io/Agnova-WEB/" target="_blank" rel="noopener"><span class="si">වෙබ් අනුවාදය බලන්න</span><span class="en">Open the web version</span> ↗</a>
+      <div><small><span class="si">ඔබේ දුරකථනයෙන් පිවිසෙන්න:</span><span class="en">Visit it on your phone:</span></small><a class="url" href="https://ruviranga123.github.io/Agnova-WEB/" target="_blank" rel="noopener">ruviranga123.github.io/Agnova-WEB</a></div>
     </div>
   </div>
 </section>
