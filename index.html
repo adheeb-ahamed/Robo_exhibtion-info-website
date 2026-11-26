@@ -63,7 +63,14 @@ html[data-lang=si] .lead{font-size:clamp(16px,2vw,19px)}
 .nav nav a{color:var(--ondark);text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px;border-radius:999px;white-space:nowrap}
 .nav nav a:hover{color:#fff;background:var(--navy2)}
 .nav nav a.cta{background:var(--orange);color:var(--navy)}
-@media(max-width:860px){.nav nav a:not(.cta){display:none}}
+@media(max-width:860px){
+  html{scroll-padding-top:118px}
+  .nav .wrap{flex-wrap:wrap;height:auto;padding-top:9px;row-gap:4px}
+  .navr{display:contents}
+  .lang{margin-left:auto}
+  .nav nav{order:3;width:calc(100% + 40px);margin:0 -20px;padding:4px 20px 10px;gap:6px}
+  .nav nav a{font-size:13.5px;padding:7px 13px;background:rgba(255,255,255,.07)}
+}
 .lang{flex:none;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--tealL);background:rgba(23,148,131,.18);color:var(--tealL);font:700 14px var(--en-body);padding:7px 14px;border-radius:999px;cursor:pointer}
 .lang .si{font-family:var(--si-body)}
 .lang svg{width:16px;height:16px}
@@ -201,6 +208,26 @@ footer img{width:88px;margin:0 auto 14px}
 footer .w{font-family:var(--en-head);font-weight:800;font-size:40px}
 footer p{color:var(--ondark);font-size:15px;margin-top:6px}
 footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
+
+/* phones */
+@media(max-width:620px){
+  section{padding:64px 0}
+  .stats{gap:10px}
+  .stat .v,html[data-lang=si] .stat .v{font-size:24px;white-space:normal}
+  .stat .l{font-size:12.5px;line-height:1.45}
+  .grid.parts,.grid.steps,.grid.feats{grid-template-columns:1fr 1fr;gap:12px}
+  .part,.step,.feat{padding:16px}
+  .part{flex-direction:column;gap:8px}
+  .part h3,.step h3,.feat h3,html[data-lang=si] .part h3,html[data-lang=si] .step h3,html[data-lang=si] .feat h3{font-size:18px}
+  .part p,.step p,.feat p,html[data-lang=si] .part p,html[data-lang=si] .step p,html[data-lang=si] .feat p{font-size:13.5px;line-height:1.6}
+  .step .n{font-size:28px}
+  .step .si-ico{width:42px;height:42px;border-radius:12px}
+  .step .si-ico svg{width:26px;height:26px}
+  .feat .ico{width:42px;height:42px;margin-bottom:4px}
+  .every,.card{padding:22px}
+  .loop{font-size:15px}
+  .tank{width:170px}
+}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
@@ -358,9 +385,9 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
         <defs><linearGradient id="sv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A3E28"/><stop offset="1" stop-color="#2E2016"/></linearGradient></defs>
         <rect width="832" height="560" fill="url(#sv)"/>
         <line x1="40" y1="46" x2="90" y2="46" stroke="#F6B93B" stroke-width="6" stroke-linecap="round"/>
-        <text class="si" x="104" y="54" fill="#FBF6EC" font-weight="700" font-size="22">සැබෑ මාර්ගය</text><text class="en" x="104" y="54" fill="#FBF6EC" font-weight="700" font-size="22">Actual path</text>
+        <text class="si" x="104" y="54" fill="#FBF6EC" font-weight="700" font-size="27">සැබෑ මාර්ගය</text><text class="en" x="104" y="54" fill="#FBF6EC" font-weight="700" font-size="27">Actual path</text>
         <line x1="290" y1="46" x2="340" y2="46" stroke="#FBF6EC" stroke-width="3" stroke-dasharray="8 6"/>
-        <text class="si" x="354" y="54" fill="#FBF6EC" font-weight="700" font-size="22">සැලසුම් කළ මාර්ගය</text><text class="en" x="354" y="54" fill="#FBF6EC" font-weight="700" font-size="22">Planned path</text>
+        <text class="si" x="354" y="54" fill="#FBF6EC" font-weight="700" font-size="27">සැලසුම් කළ මාර්ගය</text><text class="en" x="354" y="54" fill="#FBF6EC" font-weight="700" font-size="27">Planned path</text>
         <line x1="40" y1="340" x2="792" y2="340" stroke="#FBF6EC" stroke-width="3" stroke-dasharray="10 8" opacity=".6"/>
         <line x1="470" y1="196" x2="470" y2="336" stroke="#7FE0CF" stroke-width="3"/><line x1="458" y1="196" x2="482" y2="196" stroke="#7FE0CF" stroke-width="3"/>
         <path d="M430 352Q420 300 470 292q52-4 55 43 5 50-47 57-46 4-48-40Z" fill="#8C857A"/><path d="M448 318q17-16 47-10-20 10-33 24Z" fill="#A9A296"/>
@@ -377,10 +404,10 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
           <circle cx="440" cy="250" r="20" fill="#6A5ACD"/><text x="440" y="258">3</text>
           <circle cx="610" cy="280" r="20" fill="#179483"/><text x="610" y="288">4</text>
         </g>
-        <text class="si" x="470" y="176" fill="#7FE0CF" font-weight="700" font-size="20" text-anchor="middle">මාර්ගයෙන් ඉවතට</text><text class="en" x="470" y="176" fill="#7FE0CF" font-weight="700" font-size="20" text-anchor="middle">off path</text>
-        <text class="si" x="730" y="392" fill="#7FE0CF" font-weight="700" font-size="20" text-anchor="middle">ඊළඟ පැළය</text><text class="en" x="730" y="392" fill="#7FE0CF" font-weight="700" font-size="20" text-anchor="middle">Next plant</text>
+        <text class="si" x="470" y="172" fill="#7FE0CF" font-weight="700" font-size="26" text-anchor="middle">මාර්ගයෙන් ඉවතට</text><text class="en" x="470" y="176" fill="#7FE0CF" font-weight="700" font-size="26" text-anchor="middle">off path</text>
+        <text class="si" x="730" y="392" fill="#7FE0CF" font-weight="700" font-size="26" text-anchor="middle">ඊළඟ පැළය</text><text class="en" x="730" y="392" fill="#7FE0CF" font-weight="700" font-size="26" text-anchor="middle">Next plant</text>
         <path d="M140 480H730M140 468v24M730 468v24" stroke="#FBF6EC" stroke-width="2"/>
-        <text class="si" x="435" y="520" fill="#FBF6EC" font-weight="700" font-size="20" text-anchor="middle">පරතරය ගණන් කරන්නේ සැලසුම් කළ රේඛාව දිගේ</text><text class="en" x="435" y="520" fill="#FBF6EC" font-weight="700" font-size="20" text-anchor="middle">Spacing counted along the planned line</text>
+        <text class="si" x="435" y="520" fill="#FBF6EC" font-weight="700" font-size="26" text-anchor="middle">පරතරය ගණන් කරන්නේ සැලසුම් කළ රේඛාව දිගේ</text><text class="en" x="435" y="520" fill="#FBF6EC" font-weight="700" font-size="26" text-anchor="middle">Spacing counted along the planned line</text>
       </svg>
     </div>
   </div>
@@ -472,7 +499,7 @@ footer small{display:block;color:var(--dimdark);margin-top:22px;font-size:13px}
   <div class="wrap" style="position:relative">
     <p class="eyebrow rv"><span class="si">ප්‍රධාන විශේෂාංග</span><span class="en">Key features</span></p>
     <h2 class="rv"><span class="si">හැකියාවන් හයක්. විවේකයක් නැහැ.</span><span class="en">Six skills. Zero coffee breaks.</span></h2>
-    <div class="grid g3" style="margin-top:32px">
+    <div class="grid g3 feats" style="margin-top:32px">
       <div class="card feat rv" style="--c:#F28C28"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div><h3><span class="si">වස්තු හඳුනාගැනීම</span><span class="en">Object detection</span></h3><p><span class="si">මාර්ගයේ ඇති ගල් සහ බාධක හඳුනාගෙන ඒවා මඟහරියි.</span><span class="en">Spots rocks and obstacles in the path and goes around them.</span></p></div>
       <div class="card feat rv" style="--c:#E2553F"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 8 13M12 3l4 2"/><path d="M6 12l6 4-3 5q-6 1-6-4 0-3 3-5z"/></svg></div><h3><span class="si">ස්වයංක්‍රීය වළ කැපීම</span><span class="en">Auto digging</span></h3><p><span class="si">සෑම පැළයක් සඳහාම පිරිසිදු වළක් කපයි.</span><span class="en">Digs a clean hole for every seedling.</span></p></div>
       <div class="card feat rv" style="--c:#5DAE3E"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1.8"/><circle cx="7.7" cy="14.5" r="1.8"/><circle cx="16.3" cy="14.5" r="1.8"/></svg></div><h3><span class="si">කැරකෙන පැළ තැටිය</span><span class="en">Rotating seedling tray</span></h3><p><span class="si">සිදුරු 3ක තැටියෙන් පැළ එකින් එක රොබෝ අතට ලබාදෙයි.</span><span class="en">A 3-hole disc hands seedlings to the arm one by one.</span></p></div>
